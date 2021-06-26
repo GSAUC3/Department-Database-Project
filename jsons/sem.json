@@ -1,0 +1,85 @@
+{
+    "B1": {
+        "HU101": "Communicative English ",
+        "PH102": "Physics-1",
+        "CH103": "Chemistry-1",
+        "MA104": "Engineering Mathematics-1",
+        "EE105": "Electrical Technology",
+        "CS106": "Computer Programming and Data Structure",
+        "HU107": "Language Lab",
+        "PH108": "Physics-1 Lab",
+        "CH109": "Chemistry-1 Lab",
+        "EE110": "Electrical Technology Lab",
+        "CS111": "Computer Lab"
+    },
+    "B2": {
+        "HU201": "Sociology",
+        "PH202": "Physics-2",
+        "CH203": "Chemistry-2",
+        "MA204": "Engineering Mathematics-2",
+        "ET205": "Basic Electronics",
+        "ME206": "Engineering Mechanics",
+        "PH207": "Physics-2 Lab",
+        "CH208": "Chemistry-2 Lab",
+        "ET209": "Electrical Technology Lab",
+        "ME210": "Workshop Practice",
+        "ME211": "Engineering Drawing"
+    },
+    "B3": {
+        "B231": "Engineering Mathematics-3",
+        "B232": "Foundation of Applied Optics & Photonics",
+        "B233": "Photonic Materials",
+        "B234 ": "Network Theory",
+        "B235": "Analog and Digital Electronic Circuits",
+        "B231P": "Radiometry & Photometry Lab",
+        "B232P": "Computer Applications Lab"
+    },
+    "B4": {
+        "B241": "Wave Optics",
+        "B242": "Image Science",
+        "B243": "Optical Metrology & Testing",
+        "B244": "Communication systems",
+        "B245": "Electromagnetics 1",
+        "B246": "Microprocessor & Microcontroller",
+        "B241P": "Electronics Circuits Lab",
+        "B242P": "Optics 1 Lab"
+    },
+    "B5": {
+        "B351": "Signals & Systems",
+        "B352": "Electromagnetics 2",
+        "B353": "Photonics sources, detectors and displays",
+        "B354 ": " Lighting Science and Illumination Engineering",
+        "B355": "Laser Physics ",
+        "B351P": "Microprocessor & Microcontroller Lab",
+        "B352P": "Optics 2 Lab",
+        "B351S": "Computer Application based mini project & Seminar"
+    },
+    "B6": {
+        "B361": "Fiber Optics and fiber optic components",
+        "B362": "Gaussian beam Optics and Laser Applications",
+        "B363": "Fourier Optics and Holography",
+        "B364": "Optical  and Optomechanical Systems",
+        "B365": "Elective Paper 1",
+        "B361P": "Illumination Engineering Lab",
+        "B362P": "Optics 3 Lab",
+        "B363P": "Signal Processing Lab",
+        "B364P": "Optical Simulation and Design Lab"
+    },
+    "B7": {
+        "B471":"Optical materials and thin films",
+        "B472":"Instrumentation & Control",
+        "B473":"Fundamentals of Optical Fiber Communication and networking",
+        "B474":"Crystal Optics and Nonlinear Optics",
+        "B475":"Elective Paper 2",
+        "B471D":"Preliminary Project Work",
+        "B471P":"Communications Lab",
+        "B472P": "Thin film and Photolithography Lab",
+        "B473P": "Photonic Devices & Systems  Lab"
+    },
+    "B8":{
+       "B481S":"Seminar 2",
+       "B482D":"Project ",
+       "B483V":"Grand Viva"
+
+    }
+}

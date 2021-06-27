@@ -22,7 +22,7 @@ class window:
         img.image = render
         img.grid(row=0, column=0)
         Label(self.root, text=self.dept, font='Ariel ' + str(siz),
-              pady=0).grid(row=0, column=1, columnspan=15, pady=0, padx=0)
+              pady=0).grid(row=0, column=1, columnspan=11, pady=0, padx=0)
 
         # header menu bar--------------------------------
         menu = Menu(self.root)
@@ -119,14 +119,16 @@ class window:
         ttk.Button(self.root,text='Insert info',width=20,command=self.insert).grid(row=1,column=9)
         ttk.Button(self.root,text='Update info',style='info.Outline.TButton',width=20).grid(row=2,column=9)
 
-        ttk.Button(self.root,text='Refresh',width=20).grid(row=4,column=9)
-        ttk.Button(self.root,text='Clear Table',width=20).grid(row=5,column=9)
-        ttk.Button(self.root,text='Delete Record',style='danger.TButton',width=20).grid(row=6,column=9)
-        ttk.Button(self.root,text='Clear Entry Fields',width=20).grid(row=7,column=9)
-        ttk.Button(self.root,text='View All info',width=20).grid(row=8,column=9)
+        ttk.Button(self.root,text='Refresh',width=15,padding=10).grid(row=4,column=13)
+        ttk.Button(self.root,text='Clear Table',width=15,padding=10).grid(row=5,column=13)
+        ttk.Button(self.root,text='Delete Record',style='danger.TButton',width=15,padding=10).grid(row=6,column=13)
+        ttk.Button(self.root,text='Clear Entry Fields',width=15,padding=10).grid(row=7,column=13)
+        ttk.Button(self.root,text='View All info',width=15,padding=10).grid(row=8,column=13)
+        ttk.Button(self.root,text='Update Record',width=15,padding=10).grid(row=9,column=13)
+        ttk.Button(self.root,text='',width=15,padding=10).grid(row=10,column=13)
 
         #    search bar---------
-        Label(self.root,text='Search within Database',font='Helvetica 15').grid(row=1,column=11)
+        Label(self.root,text='Search within Database',font='Helvetica 18').grid(row=1,column=11,columnspan=3)
         self.nebo=StringVar()
         choose =['Full Name','Semester','Registration number','Roll number','Sex','Course']
         search_y=ttk.Combobox(self.root,value=choose,width=31,textvariable=self.nebo)
@@ -134,7 +136,7 @@ class window:
         self.nebo.set('Search By...')
         search_y.grid(row=2,column=11,columnspan=2,padx=10)
         ttk.Entry(self.root,width=33).grid(row=3,column=11,columnspan=2,pady=5,padx=5)
-        ttk.Button(self.root,text='SEARCH',width=31).grid(row=4,column=11,columnspan=2,pady=5)
+        ttk.Button(self.root,text='SEARCH',padding=20,width=15).grid(row=2,rowspan=2,column=13,pady=1)
 
         # function for the treeview
     def dhor(self,e):

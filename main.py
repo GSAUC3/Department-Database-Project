@@ -94,14 +94,14 @@ class window:
         
        #    ------------------------tree view-----------------------------
         self.tree=ttk.Treeview(self.root,height=23,selectmode='extended')
-        self.tree['columns']=('name','reg','roll','cor','sem','sex')
+        self.tree['columns']=('name','reg','roll','sem','cor','sex')
 
         self.tree.column('#0',width=0,stretch=NO)
-        self.tree.column('name',anchor=W,width=130)
-        self.tree.column('reg',anchor=W,width=200)
-        self.tree.column('roll',anchor=W,width=150)
-        self.tree.column('sem',anchor=W,width=100)
-        self.tree.column('cor',anchor=W,width=100)
+        self.tree.column('name',anchor=W,width=200)
+        self.tree.column('reg',anchor=W,width=250)
+        self.tree.column('roll',anchor=W,width=250)
+        self.tree.column('sem',anchor=W,width=200)
+        self.tree.column('cor',anchor=W,width=200)
         self.tree.column('sex',anchor=W,width=100)
 
         self.tree.heading('#0',text=None)
@@ -112,20 +112,21 @@ class window:
         self.tree.heading('cor',text='Course',anchor=W)
         self.tree.heading('sex',text='Sex',anchor=W)
         self.tree['show']='headings'
-        self.tree.grid(row=4,column=0,rowspan=10,columnspan=6,padx=0,pady=7)
+        self.tree.grid(row=4,column=0,rowspan=10,columnspan=12,padx=0,pady=7)
 
         self.tree.bind("<ButtonRelease-1>",self.dhor)
           # --BUTTONs-------------------------
         ttk.Button(self.root,text='Insert info',width=20,command=self.insert).grid(row=1,column=9)
         ttk.Button(self.root,text='Update info',style='info.Outline.TButton',width=20).grid(row=2,column=9)
 
-        ttk.Button(self.root,text='Refresh',width=15,padding=10).grid(row=4,column=13)
-        ttk.Button(self.root,text='Clear Table',width=15,padding=10).grid(row=5,column=13)
-        ttk.Button(self.root,text='Delete Record',style='danger.TButton',width=15,padding=10).grid(row=6,column=13)
-        ttk.Button(self.root,text='Clear Entry Fields',width=15,padding=10).grid(row=7,column=13)
-        ttk.Button(self.root,text='View All info',width=15,padding=10).grid(row=8,column=13)
-        ttk.Button(self.root,text='Update Record',width=15,padding=10).grid(row=9,column=13)
-        ttk.Button(self.root,text='',width=15,padding=10).grid(row=10,column=13)
+        ttk.Button(self.root,text='Refresh',width=15,padding=10).grid(row=4,column=12)
+        ttk.Button(self.root,text='Clear Table',width=15,padding=10).grid(row=5,column=12)
+        ttk.Button(self.root,text='Clear Entry Fields',width=15,padding=10).grid(row=6,column=12)
+        ttk.Button(self.root,text='',width=15,padding=10).grid(row=7,column=12)
+        ttk.Button(self.root,text='Delete Record',style='danger.TButton',width=15,padding=10).grid(row=4,column=13)
+        ttk.Button(self.root,text='View All info',width=15,padding=10).grid(row=5,column=13)
+        ttk.Button(self.root,text='Enter Marks',style='success.TButton',width=15,padding=10).grid(row=6,column=13)
+        ttk.Button(self.root,text='',width=15,padding=10).grid(row=7,column=13)
 
         #    search bar---------
         Label(self.root,text='Search within Database',font='Helvetica 18').grid(row=1,column=11,columnspan=3)

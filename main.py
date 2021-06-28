@@ -21,8 +21,8 @@ class window:
         img = Label(self.root, image=render)
         img.image = render
         img.grid(row=0, column=0)
-        Label(self.root, text=self.dept, font='Ariel ' + str(siz),
-              pady=0).grid(row=0, column=1, columnspan=11, pady=0, padx=0)
+        Label(self.root, text=self.dept, font='Ariel ' + str(siz),bg="#4c0296",fg="white", bd=5,relief=GROOVE,pady=15,padx=260
+              ).grid(row=0, column=1, columnspan=14, pady=0, padx=0)
 
         # header menu bar--------------------------------
         menu = Menu(self.root)

@@ -13,7 +13,8 @@ class window:
         self.root = root
         self.dept = dept
         self.root.title(title)
-        self.root.geometry(resolution)
+        self.res=resolution
+        self.root.geometry(self.res)
 
         load = Image.open("img/culogo.png")
         load = load.resize((120, 120), Image.ANTIALIAS)
@@ -125,7 +126,7 @@ class window:
         ttk.Button(self.root,text='',width=15,padding=10).grid(row=7,column=12)
         ttk.Button(self.root,text='Delete Record',style='danger.TButton',width=15,padding=10).grid(row=4,column=13)
         ttk.Button(self.root,text='View All info',width=15,padding=10).grid(row=5,column=13)
-        ttk.Button(self.root,text='Enter Marks',style='success.TButton',width=15,padding=10).grid(row=6,column=13)
+        ttk.Button(self.root,text='Enter Marks',style='success.TButton',width=15,padding=10,command=lambda:self.marks(self.res,self.dept)).grid(row=6,column=13)
         ttk.Button(self.root,text='',width=15,padding=10).grid(row=7,column=13)
 
         #    search bar---------
@@ -173,7 +174,16 @@ class window:
         else:
             self.k1.config(values=self.mtech)
             self.k1.current(0)
-        
+    # 2nd window for marks
+    def marks(self,r,d):
+      win=Tk()
+      win.title('OOE Database')
+      win.geometry(r)
+     
+
+
+      pass
+       
 
 if __name__ == '__main__':
     win=Style(theme='cosmo').master

@@ -86,30 +86,11 @@ class window:
         self.kg=ttk.Combobox(self.root,values=self.gender,width=23)
         self.kg.grid(row=2,column=5,padx=5)
         self.kg['state']='readonly'
-        
-       #    ------------------------tree view-----------------------------
-        self.tree=ttk.Treeview(self.root,height=23,selectmode='extended')
-        self.tree['columns']=('name','reg','roll','sem','cor','sex')
 
-        self.tree.column('#0',width=0,stretch=NO)
-        self.tree.column('name',anchor=W,width=200)
-        self.tree.column('reg',anchor=W,width=250)
-        self.tree.column('roll',anchor=W,width=250)
-        self.tree.column('sem',anchor=W,width=200)
-        self.tree.column('cor',anchor=W,width=200)
-        self.tree.column('sex',anchor=W,width=100)
-
-        self.tree.heading('#0',text=None)
-        self.tree.heading('name',text='Full Name',anchor=W)
-        self.tree.heading('reg',text='University Registration Number',anchor=W)
-        self.tree.heading('roll',text='University Roll Number',anchor=W)
-        self.tree.heading('sem',text='Current Semester',anchor=W)
-        self.tree.heading('cor',text='Course',anchor=W)
-        self.tree.heading('sex',text='Sex',anchor=W)
-        self.tree['show']='headings'
-        self.tree.grid(row=4,column=0,rowspan=10,columnspan=12,padx=0,pady=7)
-
+        coll=('name','reg','roll','sem','cor','sex')
+        head.header.disp(self,coll)
         self.tree.bind("<ButtonRelease-1>",self.dhor)
+
           # --BUTTONs-------------------------
         ttk.Button(self.root,text='Insert info',width=20,command=self.insert).grid(row=1,column=9)
         ttk.Button(self.root,text='Update info',style='info.Outline.TButton',width=20).grid(row=2,column=9)

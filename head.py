@@ -4,9 +4,10 @@ from PIL import ImageTk, Image
 
 class header:
 
-    def __init__(self, root, title, dept, resolution, siz):
+    def __init__(self, root, title, dept, resolution, siz,coll,texts,broad,x):
         self.root = root
-        
+        self.coll=coll
+        self.texts=texts
         self.root.title(title)
         # self.res=resolution
         self.root.geometry(resolution)
@@ -23,19 +24,18 @@ class header:
 
 
             #   ------------------------tree view-----------------------------
-    def disp(self,coll,texts):
         self.tree=ttk.Treeview(self.root,height=23,selectmode='extended')
-        self.tree['columns']= coll
+        self.tree['columns']= self.coll
         # ('name','reg','roll','sem','cor','sex')
         self.tree.column('#0',width=0,stretch=NO)
         self.tree.heading('#0',text=None)
 
         i=0
-        while i <len(coll):
-            self.tree.column(coll[i],anchor=W,width=200)
+        while i <len(self.coll):
+            self.tree.column(self.coll[i],anchor=W,width=broad)
             
-            self.tree.heading(coll[i],text=texts[i],anchor=W)
+            self.tree.heading(self.coll[i],text=self.texts[i],anchor=W)
             i+=1
             
         self.tree['show']='headings'
-        self.tree.grid(row=4,column=0,rowspan=10,columnspan=12,padx=0,pady=7)
+        self.tree.grid(row=x,column=0,rowspan=10,columnspan=12,padx=0,pady=7)

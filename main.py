@@ -170,19 +170,33 @@ class window:
             self.k1.current(0)
     # 2nd window for marks
     def marks(self,t,d,r,s):
+      
+      def mtob(e):
+        if l0.get() == 'B.Tech':
+            l1.config(values=self.btech)
+            l1.current(0)
+        else:
+            l1.config(values=self.mtech)
+            l1.current(0)
+        pass
       win=Toplevel()
       # self.root,self.title,self.dept,self.res,self.siz
-      
+
       win.title('OOE Database')
       head.header(win,t,d,r,s)
-      ttk.Label(win,text='Semester').grid(row=2,column=0,pady=5,padx=5)
-      btech=['B1','B2','B3','B4','B5','B6','B7','B8']
-      mtech=['M1','M2','M3','M4']
+      ttk.Label(win,text='Course').grid(row=2,column=0,pady=5,padx=5)
+      l0=ttk.Combobox(win,values=self.korse,width=23)
+      l0.grid(row=2,column=1,padx=5)
+      l0['state']='readonly'
+      l0.set(self.korse[0])
+      l0.bind("<<ComboboxSelected>>",mtob)
+      ttk.Label(win,text='Semester').grid(row=2,column=2,pady=5,padx=5)
+      
         
 
-      k1=ttk.Combobox(win,values=btech,width=23)
-      k1.grid(row=2,column=1,padx=5)
-      k1['state']='readonly'
+      l1=ttk.Combobox(win,values=self.btech,width=23)
+      l1.grid(row=2,column=3,padx=5)
+      l1['state']='readonly'
      
 
 

@@ -1,9 +1,10 @@
 from tkinter import *
-from tkinter import messagebox
 from tkinter import ttk
 from ttkbootstrap import *
 from PIL import ImageTk, Image
+from tkinter import messagebox
 import csv
+import head
 import json
 
 
@@ -12,18 +13,11 @@ class window:
     def __init__(self, root, title, dept, resolution, siz):
         self.root = root
         self.dept = dept
-        self.root.title(title)
+        self.title=title
         self.res=resolution
-        self.root.geometry(self.res)
-
-        load = Image.open("img/culogo.png")
-        load = load.resize((120, 120), Image.ANTIALIAS)
-        render = ImageTk.PhotoImage(load)
-        img = Label(self.root, image=render)
-        img.image = render
-        img.grid(row=0, column=0)
-        Label(self.root, text=self.dept, font='Ariel ' + str(siz),bg="#4c0296",fg="white", bd=5,relief=GROOVE,pady=15,padx=260
-              ).grid(row=0, column=1, columnspan=14, pady=0, padx=0)
+        self.siz=siz
+        head.header(self.root,self.title,self.dept,self.res,self.siz)
+        
 
         # header menu bar--------------------------------
         menu = Menu(self.root)
@@ -126,7 +120,7 @@ class window:
         ttk.Button(self.root,text='',width=15,padding=10).grid(row=7,column=12)
         ttk.Button(self.root,text='Delete Record',style='danger.TButton',width=15,padding=10).grid(row=4,column=13)
         ttk.Button(self.root,text='View All info',width=15,padding=10).grid(row=5,column=13)
-        ttk.Button(self.root,text='Enter Marks',style='success.TButton',width=15,padding=10,command=lambda:self.marks(self.res,self.dept)).grid(row=6,column=13)
+        ttk.Button(self.root,text='Enter Marks',style='success.TButton',width=15,padding=10,command=lambda:self.marks(self.title,self.dept,self.res,self.siz)).grid(row=6,column=13)
         ttk.Button(self.root,text='',width=15,padding=10).grid(row=7,column=13)
 
         #    search bar---------
@@ -175,10 +169,20 @@ class window:
             self.k1.config(values=self.mtech)
             self.k1.current(0)
     # 2nd window for marks
-    def marks(self,r,d):
-      win=Tk()
+    def marks(self,t,d,r,s):
+      win=Toplevel()
+      # self.root,self.title,self.dept,self.res,self.siz
+      
       win.title('OOE Database')
-      win.geometry(r)
+      head.header(win,t,d,r,s)
+      ttk.Label(win,text='Semester').grid(row=2,column=0,pady=5,padx=5)
+      btech=['B1','B2','B3','B4','B5','B6','B7','B8']
+      mtech=['M1','M2','M3','M4']
+        
+
+      k1=ttk.Combobox(win,values=btech,width=23)
+      k1.grid(row=2,column=1,padx=5)
+      k1['state']='readonly'
      
 
 

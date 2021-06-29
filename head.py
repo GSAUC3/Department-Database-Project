@@ -23,24 +23,19 @@ class header:
 
 
             #   ------------------------tree view-----------------------------
-    def disp(self,coll):
+    def disp(self,coll,texts):
         self.tree=ttk.Treeview(self.root,height=23,selectmode='extended')
         self.tree['columns']= coll
         # ('name','reg','roll','sem','cor','sex')
         self.tree.column('#0',width=0,stretch=NO)
-        self.tree.column(coll[0],anchor=W,width=200)
-        self.tree.column(coll[1],anchor=W,width=250)
-        self.tree.column(coll[2],anchor=W,width=250)
-        self.tree.column(coll[3],anchor=W,width=200)
-        self.tree.column(coll[4],anchor=W,width=200)
-        self.tree.column(coll[5],anchor=W,width=100)
-
         self.tree.heading('#0',text=None)
-        self.tree.heading(coll[0],text='Full Name',anchor=W)
-        self.tree.heading(coll[1],text='University Registration Number',anchor=W)
-        self.tree.heading(coll[2],text='University Roll Number',anchor=W)
-        self.tree.heading(coll[3],text='Current Semester',anchor=W)
-        self.tree.heading(coll[4],text='Course',anchor=W)
-        self.tree.heading(coll[5],text='Sex',anchor=W)
+
+        i=0
+        while i <len(coll):
+            self.tree.column(coll[i],anchor=W,width=200)
+            
+            self.tree.heading(coll[i],text=texts[i],anchor=W)
+            i+=1
+            
         self.tree['show']='headings'
         self.tree.grid(row=4,column=0,rowspan=10,columnspan=12,padx=0,pady=7)

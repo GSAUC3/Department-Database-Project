@@ -86,9 +86,11 @@ class window:
         self.kg=ttk.Combobox(self.root,values=self.gender,width=23)
         self.kg.grid(row=2,column=5,padx=5)
         self.kg['state']='readonly'
-
+#----------------------------------------------------------------
         coll=('name','reg','roll','sem','cor','sex')
-        head.header.disp(self,coll)
+        texts=('Full Name','University Registration Number','University Roll Number',
+        'Current Semester','Course','Sex')
+        head.header.disp(self,coll,texts)
         self.tree.bind("<ButtonRelease-1>",self.dhor)
 
           # --BUTTONs-------------------------

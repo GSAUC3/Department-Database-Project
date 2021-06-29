@@ -170,23 +170,35 @@ class window:
       # self.root,self.title,self.dept,self.res,self.siz
 
       def selecb(e):
+        a=[0,2,4,6,8,10]
+        # a1=[3,4]
         x=0
         y=3
+        def poriskar():
+          for i in a:
+            Label(win,text='\t').grid(row=3,column=i)
+          for i in a:
+            Label(win,text='\t').grid(row=4,column=i)         
+            
+
         if l1.get() == self.btech[0]:
           for i in self.data_btech[l1.get()]:
-            Label(win,text=i).grid(row=y,column=x)
+            Label(win,text=i).grid(row=y,column=x)         
+            
             if x>9:
               y=4
               x=-2
             x+=2 
         elif l1.get() == self.btech[1]: 
           for i in self.data_btech[l1.get()]:
+            
             Label(win,text=i).grid(row=y,column=x)
             if x>9:
               y=4
               x=-2
             x+=2
         elif l1.get() == self.btech[2]: 
+          poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
             if x>9:
@@ -194,6 +206,7 @@ class window:
               x=-2
             x+=2
         elif l1.get() == self.btech[3]: 
+          poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
             if x>9:
@@ -201,6 +214,7 @@ class window:
               x=-2
             x+=2
         elif l1.get() == self.btech[4]: 
+          poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
             if x>9:
@@ -208,6 +222,7 @@ class window:
               x=-2
             x+=2
         elif l1.get() == self.btech[5]: 
+          poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
             if x>9:
@@ -215,6 +230,7 @@ class window:
               x=-2
             x+=2 
         elif l1.get() == self.btech[6]: 
+          poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
             if x>9:
@@ -222,12 +238,15 @@ class window:
               x=-2
             x+=2
         elif l1.get() == self.btech[7]: 
-          for i in self.data_btech[l1.get()]:
+          poriskar()
+          for i  in (self.data_btech[l1.get()]):
+            
             Label(win,text=i).grid(row=y,column=x)
             if x>9:
               y=4
               x=-2
             x+=2
+         
 
       win.title('OOE Database')
       Label(win,text="Student's Marks Management",font='Ariel 30', bd=5,

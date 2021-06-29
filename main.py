@@ -9,7 +9,8 @@ import json
 
 
 class window:
-
+    data_btech = json.load(open('jsons/btech.json'))
+    # data_mtech = json.load(open('jsons/btech.json'))
     def __init__(self, root, title, dept, resolution, siz):
         self.root = root
         self.dept = dept
@@ -86,7 +87,8 @@ class window:
         self.kg=ttk.Combobox(self.root,values=self.gender,width=23)
         self.kg.grid(row=2,column=5,padx=5)
         self.kg['state']='readonly'
-#----------------------------------------------------------------
+
+#----------------------tree-view-----------------------------------------
         coll=('name','reg','roll','sem','cor','sex')
         texts=('Full Name','University Registration Number','University Roll Number',
         'Current Semester','Course','Sex')
@@ -151,8 +153,11 @@ class window:
         else:
             self.k1.config(values=self.mtech)
             self.k1.current(0)
-    # 2nd window for marks
+
+
+    # 2nd window for marks--------------------------------------------------------------------marks---
     def marks(self,t,d,r,s):
+      win=Toplevel()
       
       def mtob(e):
         if l0.get() == 'B.Tech':
@@ -162,25 +167,107 @@ class window:
             l1.config(values=self.mtech)
             l1.current(0)
         pass
-      win=Toplevel()
       # self.root,self.title,self.dept,self.res,self.siz
 
+      def selecb(e):
+        x=0
+        y=3
+        if l1.get() == self.btech[0]:
+          for i in self.data_btech[l1.get()]:
+            Label(win,text=i).grid(row=y,column=x)
+            if x>9:
+              y=4
+              x=-2
+            x+=2 
+        elif l1.get() == self.btech[1]: 
+          for i in self.data_btech[l1.get()]:
+            Label(win,text=i).grid(row=y,column=x)
+            if x>9:
+              y=4
+              x=-2
+            x+=2
+        elif l1.get() == self.btech[2]: 
+          for i in self.data_btech[l1.get()]:
+            Label(win,text=i).grid(row=y,column=x)
+            if x>9:
+              y=4
+              x=-2
+            x+=2
+        elif l1.get() == self.btech[3]: 
+          for i in self.data_btech[l1.get()]:
+            Label(win,text=i).grid(row=y,column=x)
+            if x>9:
+              y=4
+              x=-2
+            x+=2
+        elif l1.get() == self.btech[4]: 
+          for i in self.data_btech[l1.get()]:
+            Label(win,text=i).grid(row=y,column=x)
+            if x>9:
+              y=4
+              x=-2
+            x+=2
+        elif l1.get() == self.btech[5]: 
+          for i in self.data_btech[l1.get()]:
+            Label(win,text=i).grid(row=y,column=x)
+            if x>9:
+              y=4
+              x=-2
+            x+=2 
+        elif l1.get() == self.btech[6]: 
+          for i in self.data_btech[l1.get()]:
+            Label(win,text=i).grid(row=y,column=x)
+            if x>9:
+              y=4
+              x=-2
+            x+=2
+        elif l1.get() == self.btech[7]: 
+          for i in self.data_btech[l1.get()]:
+            Label(win,text=i).grid(row=y,column=x)
+            if x>9:
+              y=4
+              x=-2
+            x+=2
+
       win.title('OOE Database')
+      Label(win,text="Student's Marks Management",font='Ariel 30', bd=5,
+      relief=GROOVE,pady=15,padx=480).grid(row=1,column=0,columnspan=14,padx=15,pady=5)
+
       head.header(win,t,d,r,s)
-      ttk.Label(win,text='Course').grid(row=2,column=0,pady=5,padx=5)
-      l0=ttk.Combobox(win,values=self.korse,width=23)
-      l0.grid(row=2,column=1,padx=5)
+      ttk.Label(win,text='Course').grid(row=2,column=0)
+      l0=ttk.Combobox(win,values=self.korse)
+      l0.grid(row=2,column=1)
       l0['state']='readonly'
       l0.set(self.korse[0])
       l0.bind("<<ComboboxSelected>>",mtob)
-      ttk.Label(win,text='Semester').grid(row=2,column=2,pady=5,padx=5)
-      
-        
-
-      l1=ttk.Combobox(win,values=self.btech,width=23)
-      l1.grid(row=2,column=3,padx=5)
+      ttk.Label(win,text='Semester').grid(row=2,column=2)
+      l1=ttk.Combobox(win,values=self.btech)
+      l1.grid(row=2,column=3)
       l1['state']='readonly'
-     
+      l1.bind("<<ComboboxSelected>>",selecb)
+
+      self.marks_1=ttk.Entry(win,)
+      self.marks_1.grid(row=3,column=1,pady=5)
+      self.marks_2=ttk.Entry(win,)
+      self.marks_2.grid(row=3,column=3,pady=5)
+      self.marks_3=ttk.Entry(win,)
+      self.marks_3.grid(row=3,column=5,pady=5)
+      self.marks_4=ttk.Entry(win,)
+      self.marks_4.grid(row=3,column=7,pady=5)
+      self.marks_5=ttk.Entry(win,)
+      self.marks_5.grid(row=3,column=9,pady=5)
+      self.marks_6=ttk.Entry(win,)
+      self.marks_6.grid(row=3,column=11,pady=5)
+      self.marks_7=ttk.Entry(win,)
+      self.marks_7.grid(row=4,column=1,pady=5)
+      self.marks_8=ttk.Entry(win,)
+      self.marks_8.grid(row=4,column=3,pady=5)
+      self.marks_9=ttk.Entry(win,)
+      self.marks_9.grid(row=4,column=5,pady=5)
+      self.marks_10=ttk.Entry(win,)
+      self.marks_10.grid(row=4,column=7,pady=5)
+      self.marks_11=ttk.Entry(win,)
+      self.marks_11.grid(row=4,column=9,pady=5)
 
 
       pass

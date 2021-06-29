@@ -10,6 +10,7 @@ import json
 
 class window:
     data_btech = json.load(open('jsons/btech.json'))
+    
     # data_mtech = json.load(open('jsons/btech.json'))
     def __init__(self, root, title, dept, resolution, siz):
         self.root = root
@@ -17,8 +18,14 @@ class window:
         self.title=title
         self.res=resolution
         self.siz=siz
-        head.header(self.root,self.title,self.dept,self.res,self.siz)
+
+        coll=('name','reg','roll','sem','cor','sex')
+        texts=('Full Name','University Registration Number','University Roll Number',
+        'Current Semester','Course','Sex')
+        self.h=head.header(self.root,self.title,self.dept,self.res,self.siz,coll,
+        texts,200,4)
         
+        self.h.tree.bind("<ButtonRelease-1>",self.dhor)
 
         # header menu bar--------------------------------
         menu = Menu(self.root)
@@ -89,11 +96,7 @@ class window:
         self.kg['state']='readonly'
 
 #----------------------tree-view-----------------------------------------
-        coll=('name','reg','roll','sem','cor','sex')
-        texts=('Full Name','University Registration Number','University Roll Number',
-        'Current Semester','Course','Sex')
-        head.header.disp(self,coll,texts)
-        self.tree.bind("<ButtonRelease-1>",self.dhor)
+        
 
           # --BUTTONs-------------------------
         ttk.Button(self.root,text='Insert info',width=20,command=self.insert).grid(row=1,column=9)
@@ -102,11 +105,11 @@ class window:
         ttk.Button(self.root,text='Refresh',width=15,padding=10).grid(row=4,column=12)
         ttk.Button(self.root,text='Clear Table',width=15,padding=10).grid(row=5,column=12)
         ttk.Button(self.root,text='Clear Entry Fields',width=15,padding=10).grid(row=6,column=12)
-        ttk.Button(self.root,text='',width=15,padding=10).grid(row=7,column=12)
         ttk.Button(self.root,text='Delete Record',style='danger.TButton',width=15,padding=10).grid(row=4,column=13)
         ttk.Button(self.root,text='View All info',width=15,padding=10).grid(row=5,column=13)
-        ttk.Button(self.root,text='Enter Marks',style='success.TButton',width=15,padding=10,command=lambda:self.marks(self.title,self.dept,self.res,self.siz)).grid(row=6,column=13)
-        ttk.Button(self.root,text='',width=15,padding=10).grid(row=7,column=13)
+        ttk.Button(self.root,text='Enter Marks',style='success.TButton',width=15,padding=10,command=self.marks).grid(row=6,column=13)
+        # ttk.Button(self.root,text='',width=15,padding=10).grid(row=7,column=13)
+        # ttk.Button(self.root,text='',width=15,paddsing=10).grid(row=7,column=12)
 
         #    search bar---------
         Label(self.root,text='Search within Database',font='Helvetica 18').grid(row=1,column=11,columnspan=3)
@@ -125,8 +128,8 @@ class window:
         self.regno.set('')
         self.nam.set('')
         self.kg.set('')
-        selected=self.tree.focus()
-        val=self.tree.item(selected,'val')
+        selected=self.h.tree.focus()
+        val=self.h.tree.item(selected,'val')
         self.rollno.set(val[2])
         self.regno.set(val[1])
         self.nam.set(val[0])
@@ -138,7 +141,7 @@ class window:
      
     def insert(self):
         # name reg roll sem course sex
-        self.tree.insert(parent='',index='end',values=(self.nam.get(),self.regno.get(),self.rollno.get(),self.k1.get(),self.k0.get(),self.kg.get()))
+        self.h.tree.insert(parent='',index='end',values=(self.nam.get(),self.regno.get(),self.rollno.get(),self.k1.get(),self.k0.get(),self.kg.get()))
        
 
       # RIGHT CLICK SIDE POPUP MENU 
@@ -156,7 +159,7 @@ class window:
 
 
     # 2nd window for marks--------------------------------------------------------------------marks---
-    def marks(self,t,d,r,s):
+    def marks(self):
       win=Toplevel()
       
       def mtob(e):
@@ -170,6 +173,7 @@ class window:
       # self.root,self.title,self.dept,self.res,self.siz
 
       def selecb(e):
+        
         a=[0,2,4,6,8,10]
         # a1=[3,4]
         x=0
@@ -183,12 +187,14 @@ class window:
 
         if l1.get() == self.btech[0]:
           for i in self.data_btech[l1.get()]:
+            
             Label(win,text=i).grid(row=y,column=x)         
             
             if x>9:
               y=4
               x=-2
             x+=2 
+          
         elif l1.get() == self.btech[1]: 
           for i in self.data_btech[l1.get()]:
             
@@ -247,12 +253,15 @@ class window:
               x=-2
             x+=2
          
-
+      self.markus=['reg no']
+      # texts=['ulala']
       win.title('OOE Database')
       Label(win,text="Student's Marks Management",font='Ariel 30', bd=5,
       relief=GROOVE,pady=15,padx=480).grid(row=1,column=0,columnspan=14,padx=15,pady=5)
 
-      head.header(win,t,d,r,s)
+      z=head.header(win,self.title,self.dept,self.res,self.siz,
+      self.markus,self.markus,100,5)
+
       ttk.Label(win,text='Course').grid(row=2,column=0)
       l0=ttk.Combobox(win,values=self.korse)
       l0.grid(row=2,column=1)
@@ -288,6 +297,8 @@ class window:
       self.marks_11=ttk.Entry(win,)
       self.marks_11.grid(row=4,column=9,pady=5)
 
+      self.collu=['Reg No.']
+      # self.tree.bind("<ButtonRelease-1>",self.dhor)
 
       pass
        

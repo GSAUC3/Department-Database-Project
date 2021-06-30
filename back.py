@@ -42,7 +42,7 @@ def show_sems(s):
     return semss
 
 
-def find_stu(name='',reg='',roll='',course='',sem='B3',sex=''):
+def find_stu(name='',reg='',roll='',course='',sem='',sex=''):
     conn=sqlite3.connect(db_name)
     c=conn.cursor()
     c.execute(""" SELECT * FROM students WHERE
@@ -99,4 +99,3 @@ connect(sql.tsm6)
 connect(sql.tsm7)
 connect(sql.tsm8)
 
-print(find_stu())

@@ -22,7 +22,7 @@ class window:
 #----------------------tree-view-----------------------------------------
         coll=('name','reg','roll','sem','cor','sex')
         texts=('Full Name','University Registration Number','University Roll Number',
-        'Current Semester','Course','Sex')
+        'Course','Current Semester','Sex')
         self.h=head.header(self.root,self.title,self.dept,self.res,self.siz)
         self.h.Tview(coll=coll,texts=texts,mota=200,row=4)
         
@@ -84,9 +84,9 @@ class window:
         self.mtech=['M1','M2','M3','M4']
         
 
-        self.k1=ttk.Combobox(self.root,values=self.btech,width=23)
-        self.k1.grid(row=2,column=3,padx=5)
-        self.k1['state']='readonly'
+        self.ks=ttk.Combobox(self.root,values=self.btech,width=23)
+        self.ks.grid(row=2,column=3,padx=5)
+        self.ks['state']='readonly'
        #    ------------------------sex-----------------------------
 
         ttk.Label(self.root,text='Sex').grid(row=2,column=4,pady=5,padx=5)
@@ -131,11 +131,11 @@ class window:
              self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
         elif de == 'Current Semester':
           self.clcTable()
-          for row in back.find_stu(sem=self.k1.get()):
+          for row in back.find_stu(reg=self.sea.get()):
              self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
         elif de == 'Registration number':
           self.clcTable()
-          for row in back.find_stu(reg=self.sea.get()):
+          for row in back.find_stu(sem=self.sea.get()):
              self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
         elif de == 'Roll number':
           self.clcTable()
@@ -164,7 +164,7 @@ class window:
         self.regno.set(val[1])
         self.nam.set(val[0])
         self.kg.set(val[5])
-        self.k1.set(val[3])
+        self.ks.set(val[3])
         self.k0.set(val[4])
 
     def refresh(self):
@@ -176,7 +176,7 @@ class window:
         self.regno.set('')
         self.nam.set('')
         self.kg.set('')
-        self.k1.set('')
+        self.ks.set('')
         self.k0.set('') 
 
     def view_student(self):
@@ -198,11 +198,11 @@ class window:
 
     def insert(self):
         # name reg roll sem course sex
-          back.insert_stu(self.nam.get(),self.regno.get(),self.rollno.get(),self.k1.get(),self.k0.get(),self.kg.get())
-          self.h.tree.insert(parent='',index='end',values=(self.nam.get(),self.regno.get(),self.rollno.get(),self.k1.get(),self.k0.get(),self.kg.get()))
+          back.insert_stu(self.nam.get(),self.regno.get(),self.rollno.get(),self.k0.get(),self.ks.get(),self.kg.get())
+          self.h.tree.insert(parent='',index='end',values=(self.nam.get(),self.regno.get(),self.rollno.get(),self.k0.get(),self.ks.get(),self.kg.get()))
        
     def update_stu(self):
-      back.upadate_stu(self.nam.get(),self.regno.get(),self.rollno.get(),self.k1.get(),self.k0.get(),self.kg.get())
+      back.upadate_stu(self.nam.get(),self.regno.get(),self.rollno.get(),self.k0.get(),self.ks.get(),self.kg.get())
       
 
       # RIGHT CLICK SIDE POPUP MENU 
@@ -212,11 +212,11 @@ class window:
      # binding the two drop boxes (metch and btech) with their respective semester 
     def mORb(self,e):
         if self.k0.get() == 'B.Tech':
-            self.k1.config(values=self.btech)
-            self.k1.current(0)
+            self.ks.config(values=self.btech)
+            self.ks.current(0)
         else:
-            self.k1.config(values=self.mtech)
-            self.k1.current(0)
+            self.ks.config(values=self.mtech)
+            self.ks.current(0)
 
 
     # 2nd window for marks--------------------------------------------------------------------marks---

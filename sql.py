@@ -2,7 +2,7 @@ table_stu = """CREATE TABLE IF NOT EXISTS students(
         name text NUT NULL,
         regno text NOT NULL PRIMARY KEY,
         roll text NOT NULL,
-        course VARCHAR(6) NOT NULL,
+        course text NOT NULL,
         sem text NOT NULL,
         sex VARCHAR(7)
         );

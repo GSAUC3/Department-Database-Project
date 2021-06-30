@@ -185,15 +185,18 @@ class window:
             Label(win,text='\t').grid(row=4,column=i)         
             
 
-        if l1.get() == self.btech[0]:
+        if l1.get() == self.btech[0]: # semester 1
+          z.marks_clean(win)
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)         
             
             if x>9:
               y=4
               x=-2
-            x+=2          
+            x+=2 
+          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[1]: 
+          z.marks_clean(win)
           for i in self.data_btech[l1.get()]:
             
             Label(win,text=i).grid(row=y,column=x)
@@ -201,7 +204,9 @@ class window:
               y=4
               x=-2
             x+=2
+          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[2]: 
+          z.marks_clean(win)
           poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
@@ -209,7 +214,9 @@ class window:
               y=4
               x=-2
             x+=2
+          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[3]: 
+          z.marks_clean(win)
           poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
@@ -217,7 +224,9 @@ class window:
               y=4
               x=-2
             x+=2
+          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[4]: 
+          z.marks_clean(win)
           poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
@@ -225,7 +234,9 @@ class window:
               y=4
               x=-2
             x+=2
+          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[5]: 
+          z.marks_clean(win)
           poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
@@ -233,7 +244,9 @@ class window:
               y=4
               x=-2
             x+=2 
+          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[6]: 
+          z.marks_clean(win)
           poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
@@ -241,7 +254,9 @@ class window:
               y=4
               x=-2
             x+=2
+          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[7]: 
+          z.marks_clean(win)
           poriskar()
           for i  in (self.data_btech[l1.get()]):
             Label(win,text=i).grid(row=y,column=x)
@@ -249,6 +264,7 @@ class window:
               y=4
               x=-2
             x+=2
+          z.marks_view(win,val=self.data_btech[l1.get()])         
 
           
       # texts=['ulala']
@@ -270,27 +286,27 @@ class window:
       l1['state']='readonly'
       l1.bind("<<ComboboxSelected>>",selecb)
 
-      self.marks_1=ttk.Entry(win,)
+      self.marks_1=ttk.Entry(win)
       self.marks_1.grid(row=3,column=1,pady=5)
-      self.marks_2=ttk.Entry(win,)
+      self.marks_2=ttk.Entry(win)
       self.marks_2.grid(row=3,column=3,pady=5)
-      self.marks_3=ttk.Entry(win,)
+      self.marks_3=ttk.Entry(win)
       self.marks_3.grid(row=3,column=5,pady=5)
-      self.marks_4=ttk.Entry(win,)
+      self.marks_4=ttk.Entry(win)
       self.marks_4.grid(row=3,column=7,pady=5)
-      self.marks_5=ttk.Entry(win,)
+      self.marks_5=ttk.Entry(win)
       self.marks_5.grid(row=3,column=9,pady=5)
-      self.marks_6=ttk.Entry(win,)
+      self.marks_6=ttk.Entry(win)
       self.marks_6.grid(row=3,column=11,pady=5)
-      self.marks_7=ttk.Entry(win,)
+      self.marks_7=ttk.Entry(win)
       self.marks_7.grid(row=4,column=1,pady=5)
-      self.marks_8=ttk.Entry(win,)
+      self.marks_8=ttk.Entry(win)
       self.marks_8.grid(row=4,column=3,pady=5)
-      self.marks_9=ttk.Entry(win,)
+      self.marks_9=ttk.Entry(win)
       self.marks_9.grid(row=4,column=5,pady=5)
-      self.marks_10=ttk.Entry(win,)
+      self.marks_10=ttk.Entry(win)
       self.marks_10.grid(row=4,column=7,pady=5)
-      self.marks_11=ttk.Entry(win,)
+      self.marks_11=ttk.Entry(win)
       self.marks_11.grid(row=4,column=9,pady=5)
 
       # self.tree.bind("<ButtonRelease-1>",self.dhor)

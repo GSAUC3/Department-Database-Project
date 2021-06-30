@@ -39,3 +39,19 @@ class header:
             
         self.tree['show']='headings'
         self.tree.grid(row=kwargs['row'],column=0,rowspan=10,columnspan=12,padx=0,pady=7)
+
+    def marks_view(self,guru,**score):
+        self.guru=guru
+        Label(self.guru,text="Registration number",bg="lime").grid(row=5,column=0)
+        x=1
+        for i in score['val']:
+            Label(self.guru,text=i,bg="yellow").grid(row=5,column=x)
+            x+=1
+
+    def marks_clean(self,guru):
+
+        # x=1
+        for i in range(11):
+            Label(guru,text='\t').grid(row=5,column=i+1)
+            # x+=1
+        pass

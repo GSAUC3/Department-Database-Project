@@ -43,13 +43,13 @@ class window:
         self.root.config(menu=menu)
        # right click popup--------------------------------
         self.men = Menu(self.root, tearoff=False)
-        self.men.add_command(label='Refresh Table')
-        self.men.add_command(label='Clear Entry Fields')
-        self.men.add_command(label='Clear Table')
+        self.men.add_command(label='Refresh Table',command=self.refresh)
+        self.men.add_command(label='Clear Entry Fields',command=self.cls_entry)
+        self.men.add_command(label='Clear Table',command=self.clcTable)
         self.men.add_separator()
         self.men.add_command(
             label='Insert', command= self.insert)
-        self.men.add_command(label='Show All')
+        self.men.add_command(label='Show All',command=self.view_student)
         self.men.add_separator()
         self.men.add_command(label='Exit Database', command=self.root.quit)
         self.root.bind('<Button-3>', self.popup)
@@ -100,11 +100,11 @@ class window:
 
           # --BUTTONs-------------------------
         ttk.Button(self.root,text='Insert info',width=20,command=self.insert).grid(row=1,column=9)
-        ttk.Button(self.root,text='Update info',style='info.Outline.TButton',width=20).grid(row=2,column=9)
+        ttk.Button(self.root,text='Update info',style='info.Outline.TButton',width=20,command=self.update_stu).grid(row=2,column=9)
 
-        ttk.Button(self.root,text='Refresh',width=15,padding=10).grid(row=4,column=12)
-        ttk.Button(self.root,text='Clear Table',width=15,padding=10).grid(row=5,column=12)
-        ttk.Button(self.root,text='Clear Entry Fields',width=15,padding=10).grid(row=6,column=12)
+        ttk.Button(self.root,text='Refresh',width=15,padding=10,command=self.refresh).grid(row=4,column=12)
+        ttk.Button(self.root,text='Clear Table',width=15,padding=10,command=self.clcTable).grid(row=5,column=12)
+        ttk.Button(self.root,text='Clear Entry Fields',width=15,padding=10,command=self.cls_entry).grid(row=6,column=12)
         ttk.Button(self.root,text='Delete Record',style='danger.TButton',width=15,padding=10,command=self.del_stu).grid(row=4,column=13)
         ttk.Button(self.root,text='View All info',width=15,padding=10,command=self.view_student).grid(row=5,column=13)
         ttk.Button(self.root,text='Enter Marks',style='success.TButton',width=15,padding=10,command=self.marks).grid(row=6,column=13)
@@ -112,16 +112,46 @@ class window:
         # ttk.Button(self.root,text='',width=15,paddsing=10).grid(row=7,column=12)
 
         #    search bar---------
+        Label(self.root,text="Make Sure to CAPITALIZE the initials of name while Searching. It's CASE SENSITIVE",font='Ariel 9',bg='yellow').grid(row=3,column=3,columnspan=4)
         Label(self.root,text='Search within Database',font='Helvetica 18').grid(row=1,column=11,columnspan=3)
         self.nebo=StringVar()
-        choose =['Full Name','Semester','Registration number','Roll number','Sex','Course']
+        choose =['Full Name','Current Semester','Registration number','Roll number','Sex','Course']
         search_y=ttk.Combobox(self.root,value=choose,width=31,textvariable=self.nebo)
         search_y['state'] = 'readonly'
         self.nebo.set('Search By...')
         search_y.grid(row=2,column=11,columnspan=2,padx=10)
-        ttk.Entry(self.root,width=33).grid(row=3,column=11,columnspan=2,pady=5,padx=5)
-        ttk.Button(self.root,text='SEARCH',padding=20,width=15).grid(row=2,rowspan=2,column=13,pady=1)
+        self.sea=ttk.Entry(self.root,width=33)
+        self.sea.grid(row=3,column=11,columnspan=2,pady=5,padx=5)
+        ttk.Button(self.root,text='SEARCH',padding=20,width=15,command=lambda:self.search(self.nebo.get())).grid(row=2,rowspan=2,column=13,pady=1)
 
+    def search(self,de):
+        if de == 'Full Name':
+          self.clcTable()
+          for row in back.find_stu(name=self.sea.get()):
+             self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
+        elif de == 'Current Semester':
+          self.clcTable()
+          for row in back.find_stu(sem=self.k1.get()):
+             self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
+        elif de == 'Registration number':
+          self.clcTable()
+          for row in back.find_stu(reg=self.sea.get()):
+             self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
+        elif de == 'Roll number':
+          self.clcTable()
+          for row in back.find_stu(roll=self.sea.get()):
+             self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
+        elif de == 'Course':
+          self.clcTable()
+          for row in back.find_stu(course=self.sea.get()):
+             self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
+        elif de == 'Sex':
+          self.clcTable()
+          for row in back.find_stu(sex=self.sea.get()):
+             self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
+        else:
+            messagebox.showerror("ATTENTION!","Select a valid Option!")
+        pass
         # function for the treeview
     def dhor(self,e):
         self.rollno.set('')
@@ -136,8 +166,19 @@ class window:
         self.kg.set(val[5])
         self.k1.set(val[3])
         self.k0.set(val[4])
-        
-        
+
+    def refresh(self):
+      self.clcTable()    
+      self.view_student()
+
+    def cls_entry(self):
+        self.rollno.set('')
+        self.regno.set('')
+        self.nam.set('')
+        self.kg.set('')
+        self.k1.set('')
+        self.k0.set('') 
+
     def view_student(self):
         if back.check() is False:
           messagebox.showinfo("OOE DATABASE","No info to SHOW!\nDatabase is EMPTY")
@@ -145,10 +186,14 @@ class window:
           for row in back.show_stu():
             self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
 
+    def clcTable(self):
+      for r in self.h.tree.get_children():
+          self.h.tree.delete(r)   # to remove all data from the tree view but not from the database
+
     def del_stu(self):
       selected=self.h.tree.focus()
       value=self.h.tree.item(selected,'value')
-      print(value)
+      back.de_l(value[1],'students')
       pass        
 
     def insert(self):
@@ -156,6 +201,9 @@ class window:
           back.insert_stu(self.nam.get(),self.regno.get(),self.rollno.get(),self.k1.get(),self.k0.get(),self.kg.get())
           self.h.tree.insert(parent='',index='end',values=(self.nam.get(),self.regno.get(),self.rollno.get(),self.k1.get(),self.k0.get(),self.kg.get()))
        
+    def update_stu(self):
+      back.upadate_stu(self.nam.get(),self.regno.get(),self.rollno.get(),self.k1.get(),self.k0.get(),self.kg.get())
+      
 
       # RIGHT CLICK SIDE POPUP MENU 
     def popup(self,e):
@@ -332,7 +380,6 @@ if __name__ == '__main__':
  # make the necessary changes for your won depertment here, that includes title,
  #  name of the dept,font size, and resolution / size of the window
     title='OOE Database'                
-
     department='Department Of Optics and Photonics'
     resolution = '1600x900'
     siz='40' #font size

@@ -42,7 +42,7 @@ def show_sems(s):
     return semss
 
 
-def find_stu(name='',reg='',roll='',course='',sem='',sex=''):
+def find_stu(name='',reg='',roll='',course='',sem='B3',sex=''):
     conn=sqlite3.connect(db_name)
     c=conn.cursor()
     c.execute(""" SELECT * FROM students WHERE
@@ -70,16 +70,26 @@ def upadate_stu(name,reg,roll,course,sem,sex):
     conn.commit()
     conn.close()
 
+
+def insert_sem(*args):
+    pass
+
+
+def drop_table(tab):
+    conn = sqlite3.connect(db_name)
+    c = conn.cursor()
+    c.execute("DROP TABLE "+tab)
+    conn.commit()
+    conn.close()
+    pass
+# connect(sql.table_stu)
 def check():
     if len(show_stu())==0:
         return False
     else:
         return True
 
-def insert_sem(*args):
-    pass
-
-connect(sql.table_stu)
+connect(sql.table_stu)       
 connect(sql.tsm1)
 connect(sql.tsm2)
 connect(sql.tsm3)
@@ -88,3 +98,5 @@ connect(sql.tsm5)
 connect(sql.tsm6)
 connect(sql.tsm7)
 connect(sql.tsm8)
+
+print(find_stu())

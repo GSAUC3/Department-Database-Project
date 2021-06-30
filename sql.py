@@ -3,7 +3,7 @@ table_stu = """CREATE TABLE IF NOT EXISTS students(
         regno text NOT NULL PRIMARY KEY,
         roll text NOT NULL,
         course VARCHAR(6) NOT NULL,
-        sem VARCHAR(3) NOT NULL,
+        sem text NOT NULL,
         sex VARCHAR(7)
         );
             """

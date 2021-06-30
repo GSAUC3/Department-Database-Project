@@ -19,11 +19,12 @@ class window:
         self.res=resolution
         self.siz=siz
 
+#----------------------tree-view-----------------------------------------
         coll=('name','reg','roll','sem','cor','sex')
         texts=('Full Name','University Registration Number','University Roll Number',
         'Current Semester','Course','Sex')
-        self.h=head.header(self.root,self.title,self.dept,self.res,self.siz,coll,
-        texts,200,4)
+        self.h=head.header(self.root,self.title,self.dept,self.res,self.siz)
+        self.h.Tview(coll=coll,texts=texts,mota=200,row=4)
         
         self.h.tree.bind("<ButtonRelease-1>",self.dhor)
 
@@ -95,7 +96,6 @@ class window:
         self.kg.grid(row=2,column=5,padx=5)
         self.kg['state']='readonly'
 
-#----------------------tree-view-----------------------------------------
         
 
           # --BUTTONs-------------------------
@@ -187,14 +187,12 @@ class window:
 
         if l1.get() == self.btech[0]:
           for i in self.data_btech[l1.get()]:
-            
             Label(win,text=i).grid(row=y,column=x)         
             
             if x>9:
               y=4
               x=-2
-            x+=2 
-          
+            x+=2          
         elif l1.get() == self.btech[1]: 
           for i in self.data_btech[l1.get()]:
             
@@ -246,22 +244,20 @@ class window:
         elif l1.get() == self.btech[7]: 
           poriskar()
           for i  in (self.data_btech[l1.get()]):
-            
             Label(win,text=i).grid(row=y,column=x)
             if x>9:
               y=4
               x=-2
             x+=2
-         
-      self.markus=['reg no']
+
+          
       # texts=['ulala']
       win.title('OOE Database')
       Label(win,text="Student's Marks Management",font='Ariel 30', bd=5,
       relief=GROOVE,pady=15,padx=480).grid(row=1,column=0,columnspan=14,padx=15,pady=5)
-
-      z=head.header(win,self.title,self.dept,self.res,self.siz,
-      self.markus,self.markus,100,5)
-
+    
+      z=head.header(win,self.title,self.dept,self.res,self.siz)
+      
       ttk.Label(win,text='Course').grid(row=2,column=0)
       l0=ttk.Combobox(win,values=self.korse)
       l0.grid(row=2,column=1)
@@ -297,7 +293,6 @@ class window:
       self.marks_11=ttk.Entry(win,)
       self.marks_11.grid(row=4,column=9,pady=5)
 
-      self.collu=['Reg No.']
       # self.tree.bind("<ButtonRelease-1>",self.dhor)
 
       pass

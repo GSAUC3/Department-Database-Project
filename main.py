@@ -1,11 +1,11 @@
 from tkinter import *
 from tkinter import ttk
 from ttkbootstrap import *
-from PIL import ImageTk, Image
 from tkinter import messagebox
 import csv
 import head
 import json
+import back
 
 
 class window:
@@ -105,8 +105,8 @@ class window:
         ttk.Button(self.root,text='Refresh',width=15,padding=10).grid(row=4,column=12)
         ttk.Button(self.root,text='Clear Table',width=15,padding=10).grid(row=5,column=12)
         ttk.Button(self.root,text='Clear Entry Fields',width=15,padding=10).grid(row=6,column=12)
-        ttk.Button(self.root,text='Delete Record',style='danger.TButton',width=15,padding=10).grid(row=4,column=13)
-        ttk.Button(self.root,text='View All info',width=15,padding=10).grid(row=5,column=13)
+        ttk.Button(self.root,text='Delete Record',style='danger.TButton',width=15,padding=10,command=self.del_stu).grid(row=4,column=13)
+        ttk.Button(self.root,text='View All info',width=15,padding=10,command=self.view_student).grid(row=5,column=13)
         ttk.Button(self.root,text='Enter Marks',style='success.TButton',width=15,padding=10,command=self.marks).grid(row=6,column=13)
         # ttk.Button(self.root,text='',width=15,padding=10).grid(row=7,column=13)
         # ttk.Button(self.root,text='',width=15,paddsing=10).grid(row=7,column=12)
@@ -137,11 +137,21 @@ class window:
         self.k1.set(val[3])
         self.k0.set(val[4])
         
-        pass
-     
+        
+    def view_student(self):
+        if back.check() is False:
+          messagebox.showinfo("OOE DATABASE","No info to SHOW!\nDatabase is EMPTY")
+        else:
+          for row in back.show_stu():
+            self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
+
+    def del_stu(self):
+      pass        
+
     def insert(self):
         # name reg roll sem course sex
-        self.h.tree.insert(parent='',index='end',values=(self.nam.get(),self.regno.get(),self.rollno.get(),self.k1.get(),self.k0.get(),self.kg.get()))
+
+          self.h.tree.insert(parent='',index='end',values=(self.nam.get(),self.regno.get(),self.rollno.get(),self.k1.get(),self.k0.get(),self.kg.get()))
        
 
       # RIGHT CLICK SIDE POPUP MENU 

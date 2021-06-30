@@ -128,3 +128,6 @@ student_info = """
 view_all_stds = """
     SELECT * FROM students
     """
+upd_stu = """
+    UPDATE students SET name=?,roll=?,course=?,sem=?,sex=? WHERE regno=?
+"""

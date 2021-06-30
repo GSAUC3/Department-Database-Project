@@ -1,7 +1,7 @@
 import sqlite3
 import sql
 
-db_name = ''
+db_name = 'optics_database'
 
 # ---------TABLE CREATION-----------------
 def connect():
@@ -22,7 +22,7 @@ def insert_stu(name,reg,rol,course,sem,sex):
     conn.close()
 
 #-------------------SHOWING ALL DATA OF THE RSPECTIVE TABLE---------------------
-def show_only_stu():
+def show_stu():
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
     c.execute(sql.view_all_stds)
@@ -41,6 +41,18 @@ def show_sems(s):
     conn.close() 
     return semss
 
+
+def find_stu(name='',reg='',roll='',course='',sem='',sex=''):
+    conn=sqlite3.connect(db_name)
+    c=conn.cursor()
+    c.execute(""" SELECT * FROM students WHERE
+    name=? OR regno=? OR roll=? OR course=? OR sem=? OR sex=?
+    
+    """,(name,reg,roll,course,sem,sex))
+    row = c.fetchall()
+    conn.commit()
+    conn.close()
+    return row
 #------------------------------------------------------
 
 def de_l(reg,table_name):
@@ -51,6 +63,20 @@ def de_l(reg,table_name):
     conn.close()
 #------------------------------------------------------
 
-def upadate():
+def upadate_stu(name,reg,roll,course,sem,sex):
+    conn = sqlite3.connect(db_name)
+    c = conn.cursor()
+    c.execute(sql.upd_stu,(name,roll,course,sem,sex,reg))
+    conn.commit()
+    conn.close()
+
+def check():
+    if len(show_stu())==0:
+        return False
+    else:
+        return True
+
+def insert_sem(*args):
     pass
 
+connect()

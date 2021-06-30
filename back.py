@@ -4,10 +4,10 @@ import sql
 db_name = 'optics_database'
 
 # ---------TABLE CREATION-----------------
-def connect():
+def connect(seql):
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
-    c.execute(sql.table_creation)
+    c.execute(seql)
     conn.commit()
     conn.close()
 
@@ -79,4 +79,12 @@ def check():
 def insert_sem(*args):
     pass
 
-connect()
+connect(sql.table_stu)
+connect(sql.tsm1)
+connect(sql.tsm2)
+connect(sql.tsm3)
+connect(sql.tsm4)
+connect(sql.tsm5)
+connect(sql.tsm6)
+connect(sql.tsm7)
+connect(sql.tsm8)

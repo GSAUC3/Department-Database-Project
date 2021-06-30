@@ -1,4 +1,4 @@
-table_creation = """CREATE TABLE students IF NOT EXISTS (
+table_stu = """CREATE TABLE IF NOT EXISTS students(
         name text NUT NULL,
         regno text NOT NULL PRIMARY KEY,
         roll text NOT NULL,
@@ -6,7 +6,33 @@ table_creation = """CREATE TABLE students IF NOT EXISTS (
         sem VARCHAR(3) NOT NULL,
         sex VARCHAR(7)
         );
-            CREATE TABLE sem7 IF NOT EXISTS (
+            """
+student_info = "INSERT INTO students VALUES(?,?,?,?,?,?)"
+
+
+view_all_stds = """
+    SELECT * FROM students
+    """
+upd_stu = """
+    UPDATE students SET name=?,roll=?,course=?,sem=?,sex=? WHERE regno=?
+"""
+
+tsm6="""CREATE TABLE IF NOT EXISTS sem6 (
+        regno text NOT NULL PRIMARY KEY,
+        B461 REAL NOT NULL,
+        B462 REAL NOT NULL,
+        B463 REAL NOT NULL,
+        B464 REAL NOT NULL,
+        B465 REAL NOT NULL,
+        B361P REAL NOT NULL,
+        B362P REAL NOT NULL,
+        B363P REAL NOT NULL,
+        B364P REAL NOT NULL,
+        cgpa REAL NOT NULL,
+        passed Boolean NOT NULL
+        );"""
+
+tsm7="""CREATE TABLE IF NOT EXISTS sem7 (
         regno text NOT NULL PRIMARY KEY,
         B471 REAL NOT NULL,
         B472 REAL NOT NULL,
@@ -20,23 +46,8 @@ table_creation = """CREATE TABLE students IF NOT EXISTS (
         cgpa REAL NOT NULL,
         passed Boolean NOT NULL
         );
-
-        CREATE TABLE sem6 IF NOT EXISTS (
-        regno text NOT NULL PRIMARY KEY,
-        B461 REAL NOT NULL,
-        B462 REAL NOT NULL,
-        B463 REAL NOT NULL,
-        B464 REAL NOT NULL,
-        B465 REAL NOT NULL,
-        B361P REAL NOT NULL,
-        B362P REAL NOT NULL,
-        B363P REAL NOT NULL,
-        B364P REAL NOT NULL,
-        cgpa REAL NOT NULL,
-        passed Boolean NOT NULL
-        );
-
-        CREATE TABLE sem5 IF NOT EXISTS (
+        """
+tsm5="""CREATE TABLE IF NOT EXISTS sem5 (
         regno text NOT NULL PRIMARY KEY,
         B451 REAL NOT NULL,
         B452 REAL NOT NULL,
@@ -48,9 +59,9 @@ table_creation = """CREATE TABLE students IF NOT EXISTS (
         B351S REAL NOT NULL,
         cgpa REAL NOT NULL,
         passed Boolean NOT NULL
-        );
+        );"""
 
-        CREATE TABLE sem4 IF NOT EXISTS (
+tsm4="""CREATE TABLE IF NOT EXISTS sem4 (
         regno text NOT NULL PRIMARY KEY,
         B241 REAL NOT NULL,
         B242 REAL NOT NULL,
@@ -62,19 +73,20 @@ table_creation = """CREATE TABLE students IF NOT EXISTS (
         B242P REAL NOT NULL,
         cgpa REAL NOT NULL,
         passed Boolean NOT NULL
-        );
+        );"""
 
 
-        CREATE TABLE sem8 IF NOT EXISTS (
+
+tsm8="""CREATE TABLE IF NOT EXISTS sem8 (
         regno text NOT NULL PRIMARY KEY,
         B481S REAL NOT NULL,
         B482D REAL NOT NULL,
         B483V REAL NOT NULL,
         cgpa REAL NOT NULL,
         passed Boolean NOT NULL
-        );
+        );"""
 
-        CREATE TABLE sem1 IF NOT EXISTS (
+tsm1="""CREATE TABLE IF NOT EXISTS sem1 (
         regno text NOT NULL PRIMARY KEY,
         HU101 REAL NOT NULL,
         PH102 REAL NOT NULL,
@@ -89,9 +101,9 @@ table_creation = """CREATE TABLE students IF NOT EXISTS (
         CS111 REAL NOT NULL,
         cgpa REAL NOT NULL,
         passed Boolean NOT NULL
-        );
+        );"""
 
-        CREATE TABLE sem2 IF NOT EXISTS (
+tsm2=   """CREATE TABLE IF NOT EXISTS sem2 (
         regno text NOT NULL PRIMARY KEY,
         HU201 REAL NOT NULL,
         PH202 REAL NOT NULL,
@@ -106,9 +118,9 @@ table_creation = """CREATE TABLE students IF NOT EXISTS (
         ME211 REAL NOT NULL,
         cgpa REAL NOT NULL,
         passed Boolean NOT NULL
-        );
+        );"""
 
-        CREATE TABLE sem3 IF NOT EXISTS (
+tsm3=   """CREATE TABLE IF NOT EXISTS sem3 (
         regno text NOT NULL PRIMARY KEY,
         B231 REAL NOT NULL,
         B232 REAL NOT NULL,
@@ -119,15 +131,5 @@ table_creation = """CREATE TABLE students IF NOT EXISTS (
         B232P REAL NOT NULL,
         cgpa REAL NOT NULL,
         passed Boolean NOT NULL
-        );
-        """
-student_info = """
-    INSERT INTO students VALUES(?,?,?,?,?,?),
-    """
-
-view_all_stds = """
-    SELECT * FROM students
-    """
-upd_stu = """
-    UPDATE students SET name=?,roll=?,course=?,sem=?,sex=? WHERE regno=?
-"""
+        );"""
+    

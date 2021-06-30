@@ -146,11 +146,14 @@ class window:
             self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
 
     def del_stu(self):
+      selected=self.h.tree.focus()
+      value=self.h.tree.item(selected,'value')
+      print(value)
       pass        
 
     def insert(self):
         # name reg roll sem course sex
-
+          back.insert_stu(self.nam.get(),self.regno.get(),self.rollno.get(),self.k1.get(),self.k0.get(),self.kg.get())
           self.h.tree.insert(parent='',index='end',values=(self.nam.get(),self.regno.get(),self.rollno.get(),self.k1.get(),self.k0.get(),self.kg.get()))
        
 

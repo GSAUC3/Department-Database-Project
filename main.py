@@ -21,10 +21,10 @@ class window:
 
 #----------------------tree-view-----------------------------------------
         coll=('name','reg','roll','sem','cor','sex')
-        texts=('Full Name','University Registration Number','University Roll Number',
+        self.texts=('Full Name','University Registration Number','University Roll Number',
         'Course','Current Semester','Sex')
         self.h=head.header(self.root,self.title,self.dept,self.res,self.siz)
-        self.h.Tview(coll=coll,texts=texts,mota=200,row=4)
+        self.h.Tview(coll=coll,texts=self.texts,mota=200,row=4)
         
         self.h.tree.bind("<ButtonRelease-1>",self.dhor)
 
@@ -33,7 +33,7 @@ class window:
         self.file = Menu(menu)
         self.file.add_command(label='New')
         self.file.add_command(label='Open')
-        self.file.add_command(label='Save')
+        self.file.add_command(label='Save',command=self.savetocsv)
         self.file.add_separator()
         self.file.add_command(label='Exit', command=self.root.quit)
         menu.add_cascade(label='File', menu=self.file)
@@ -124,6 +124,24 @@ class window:
         self.sea.grid(row=3,column=11,columnspan=2,pady=5,padx=5)
         ttk.Button(self.root,text='SEARCH',padding=20,width=15,command=lambda:self.search(self.nebo.get())).grid(row=2,rowspan=2,column=13,pady=1)
 
+    def savetocsv(self):
+        pop=Toplevel(self.root)
+        pop.geometry('300x100')
+        self.v = StringVar()
+        Label(pop,text='Save File Name as').pack()
+        ttk.Entry(pop,textvariable=self.v).pack()
+        ttk.Button(pop,text='Save',width=18,command=lambda:exp(self.v.get())).pack(pady=5)
+        def exp(x):
+            with open(x + '.csv','w',newline='') as f:
+                 chompa = csv.writer(f,dialect='excel')
+                 chompa.writerow(self.texts)
+                 for r in back.show_stu():
+                    chompa.writerow(r)
+            messagebox.showinfo("File Saved","Saved as " + x +".csv")
+      # this function will save the required table into .csv format 
+      # that can be viewed in excel
+      
+     
     def search(self,de):
         if de == 'Full Name':
           if len(back.find_stu(name=self.sea.get()))== 0:
@@ -204,6 +222,7 @@ class window:
       selected=self.h.tree.focus()
       value=self.h.tree.item(selected,'value')
       back.de_l(value[1],'students')
+      #de_l(focused item, name of the table)
       pass        
 
     def insert(self):
@@ -231,6 +250,8 @@ class window:
 
     # 2nd window for marks--------------------------------------------------------------------marks---
     def marks(self):
+      selected=self.h.tree.focus()
+      value=self.h.tree.item(selected,'value')
       win=Toplevel()
       
       def mtob(e):
@@ -255,7 +276,7 @@ class window:
           for i in a:
             Label(win,text='\t').grid(row=4,column=i)         
             
-
+        #labels for the entries
         if l1.get() == self.btech[0]: # semester 1
           z.marks_clean(win)
           for i in self.data_btech[l1.get()]:
@@ -356,6 +377,8 @@ class window:
       l1.grid(row=2,column=3)
       l1['state']='readonly'
       l1.bind("<<ComboboxSelected>>",selecb)
+      
+      Label(win,text="Registration Number: "+value[1],bg='Lightblue').grid(row=2,column=4,columnspan=4)
 
       self.marks_1=ttk.Entry(win)
       self.marks_1.grid(row=3,column=1,pady=5)

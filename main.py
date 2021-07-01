@@ -126,21 +126,30 @@ class window:
 
     def search(self,de):
         if de == 'Full Name':
-          self.clcTable()
-          for row in back.find_stu(name=self.sea.get()):
-             self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
+          if len(back.find_stu(name=self.sea.get()))== 0:
+            messagebox.showinfo("OOE Database","Name Not Found!\n Please check the input!")
+            self.clcTable()
+          else:
+            for row in back.find_stu(name=self.sea.get()):
+               self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
         elif de == 'Current Semester':
           self.clcTable()
           for row in back.find_stu(sem=self.sea.get()):
              self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
         elif de == 'Registration number':
-          self.clcTable()
-          for row in back.find_stu(reg=self.sea.get()):
-             self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
+          if len(back.find_stu(reg=self.sea.get()))== 0:
+            messagebox.showinfo("OOE Database","Registration number Not Found\n Please check the input!")
+          else:
+            self.clcTable()
+            for row in back.find_stu(reg=self.sea.get()):
+              self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
         elif de == 'Roll number':
-          self.clcTable()
-          for row in back.find_stu(roll=self.sea.get()):
-             self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
+          if len(back.find_stu(roll=self.sea.get()))== 0:
+            messagebox.showinfo("OOE Database","Data Not Found\n Please check the input!")
+          else:
+            self.clcTable()
+            for row in back.find_stu(roll=self.sea.get()):
+              self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
         elif de == 'Course':
           self.clcTable()
           for row in back.find_stu(course=self.sea.get()):

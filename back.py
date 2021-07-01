@@ -17,7 +17,8 @@ def connect(seql):
 def insert_stu(name,reg,rol,course,sem,sex):
     conn = sqlite3.connect(db_name)
     c = conn.cursor()
-    c.execute(sql.student_info,(name,reg,rol,course,sem,sex))
+    c.execute("INSERT INTO students (name,regno,roll,course,sem,sex) VALUES(?,?,?,?,?,?)"
+    ,(name,reg,rol,course,sem,sex))
     conn.commit()
     conn.close()
 

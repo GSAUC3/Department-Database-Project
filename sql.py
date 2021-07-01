@@ -7,7 +7,7 @@ table_stu = """CREATE TABLE IF NOT EXISTS students(
         sex VARCHAR(7)
         );
             """
-student_info = "INSERT INTO students VALUES(?,?,?,?,?,?)"
+
 
 
 view_all_stds = """

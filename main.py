@@ -131,11 +131,11 @@ class window:
              self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
         elif de == 'Current Semester':
           self.clcTable()
-          for row in back.find_stu(reg=self.sea.get()):
+          for row in back.find_stu(sem=self.sea.get()):
              self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
         elif de == 'Registration number':
           self.clcTable()
-          for row in back.find_stu(sem=self.sea.get()):
+          for row in back.find_stu(reg=self.sea.get()):
              self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
         elif de == 'Roll number':
           self.clcTable()
@@ -149,6 +149,7 @@ class window:
           self.clcTable()
           for row in back.find_stu(sex=self.sea.get()):
              self.h.tree.insert(parent='',index='end',values=(row[0],row[1],row[2],row[3],row[4],row[5]))
+        
         else:
             messagebox.showerror("ATTENTION!","Select a valid Option!")
         pass
@@ -164,8 +165,8 @@ class window:
         self.regno.set(val[1])
         self.nam.set(val[0])
         self.kg.set(val[5])
-        self.ks.set(val[3])
-        self.k0.set(val[4])
+        self.ks.set(val[4])
+        self.k0.set(val[3])
 
     def refresh(self):
       self.clcTable()    
@@ -198,7 +199,7 @@ class window:
 
     def insert(self):
         # name reg roll sem course sex
-          back.insert_stu(self.nam.get(),self.regno.get(),self.rollno.get(),self.k0.get(),self.ks.get(),self.kg.get())
+          back.insert_stu(name=self.nam.get(),reg=self.regno.get(),rol=self.rollno.get(),course=self.k0.get(),sem=self.ks.get(),sex=self.kg.get())
           self.h.tree.insert(parent='',index='end',values=(self.nam.get(),self.regno.get(),self.rollno.get(),self.k0.get(),self.ks.get(),self.kg.get()))
        
     def update_stu(self):

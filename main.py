@@ -407,8 +407,7 @@ class window:
 
       pass
        
-
-if __name__ == '__main__':
+def main():
     win=Style(theme='cosmo').master
     def login():
       if back.in_log(u.get(),u1.get()) == True:
@@ -466,3 +465,6 @@ if __name__ == '__main__':
     # ['lumen', 'pulse', 'litera', 'minty', 'flatly', 'superhero', 'solar', 'alt', 
     # 'yeti', 'journal', 'vista', 'default', 'classic', 'sandstone', 'cyborg', 'united', 
     # 'xpnative', 'clam', 'winnative', 'cosmo', 'darkly']
+
+if __name__ == '__main__':
+  main()

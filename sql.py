@@ -132,4 +132,10 @@ tsm3=   """CREATE TABLE IF NOT EXISTS sem3 (
         cgpa REAL NOT NULL,
         passed Boolean NOT NULL
         );"""
-    
+
+logg = """
+        CREATE TABLE IF NOT EXISTS admin(
+                userid text NOT NULL PRIMARY KEY,
+                password text NOT NULL
+        );
+"""

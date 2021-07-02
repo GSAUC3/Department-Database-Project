@@ -99,4 +99,43 @@ connect(sql.tsm5)
 connect(sql.tsm6)
 connect(sql.tsm7)
 connect(sql.tsm8)
+#------------------------------------------------------------------
+def login():
+    conn = sqlite3.connect('login.db')
+    c = conn.cursor()
+    c.execute(sql.logg)
+    conn.commit()
+    conn.close()
 
+def sign(user,pas):
+    
+    conn = sqlite3.connect('login.db')
+    c = conn.cursor()
+    c.execute("Insert INTO admin (userid,password) values(?,?)",(user,pas))
+    conn.commit()
+    conn.close()
+
+def in_log(user,pas):
+    conn = sqlite3.connect('login.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM admin WHERE userid=?",(user,))
+    amni=c.fetchall()
+    conn.commit()
+    # print (str(amni[0][1]))
+    conn.close()
+    if amni[0][1]==pas:
+        return True
+    else:
+        return False
+
+login()
+
+# print(in_log('admin','12345'))
+# conn = sqlite3.connect('login.db')
+# c = conn.cursor()
+# c.execute("SELECT * FROM admin")
+# amni=c.fetchall()
+# conn.commit()
+
+# conn.close()
+# print(amni)

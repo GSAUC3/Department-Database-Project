@@ -410,6 +410,48 @@ class window:
 
 if __name__ == '__main__':
     win=Style(theme='cosmo').master
+    def login():
+      if back.in_log(u.get(),u1.get()) == True:
+        header=window(win,title,department,resolution,siz)
+        log.destroy()
+      else:
+        messagebox.showinfo("Access Denied!","Not an USER\n MAKE SURE TO USE CORREST USER ID")
+        win.destroy()
+
+    
+    def signup():
+      back.sign(su.get(),su1.get())
+      pass
+
+
+    log = Toplevel()
+    log.title("ADMIN LOG IN")
+    # log.geometry('600x400')
+    Label(log,text="LOG IN | SIGN UP").pack()
+    frame1 = Frame(log)
+    frame1.pack(side=LEFT,padx=10,pady=10)
+    frame2 = Frame(log)
+    frame2.pack(side=LEFT,padx=10,pady=10)
+    Label(frame1,text="Log In",font="Ariel 20").pack(side=TOP)
+    Label(frame1,text="User ID").pack()
+    u=ttk.Entry(frame1)
+    u.pack()
+    Label(frame1,text="Password").pack()
+    u1=ttk.Entry(frame1,show='*')
+    u1.pack()
+    ttk.Button(frame1,text="Log IN",command=login).pack(pady=10)
+
+    Label(frame2,text="Sign Up",font="Ariel 20").pack()
+    Label(frame2,text="User ID").pack()
+    su=ttk.Entry(frame2)
+    su.pack()
+    Label(frame2,text="Password").pack()
+    su1=ttk.Entry(frame2,show='*')
+    su1.pack()
+    ttk.Button(frame2,text="Sign Up",command=signup).pack(pady=10)
+    
+
+
  # make the necessary changes for your won depertment here, that includes title,
  #  name of the dept,font size, and resolution / size of the window
     title='OOE Database'                
@@ -417,7 +459,7 @@ if __name__ == '__main__':
     resolution = '1600x900'
     siz='40' #font size
 
-    header=window(win,title,department,resolution,siz)
+    # header=window(win,title,department,resolution,siz)
     
     win.mainloop()
 

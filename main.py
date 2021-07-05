@@ -278,17 +278,16 @@ class window:
             
         #labels for the entries
         if l1.get() == self.btech[0]: # semester 1
-          z.marks_clean(win)
+          
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)         
             
             if x>9:
               y=4
-              x=-2
+              x=-2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
             x+=2 
-          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[1]: 
-          z.marks_clean(win)
+          
           for i in self.data_btech[l1.get()]:
             
             Label(win,text=i).grid(row=y,column=x)
@@ -296,9 +295,8 @@ class window:
               y=4
               x=-2
             x+=2
-          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[2]: 
-          z.marks_clean(win)
+          
           poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
@@ -306,9 +304,8 @@ class window:
               y=4
               x=-2
             x+=2
-          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[3]: 
-          z.marks_clean(win)
+          
           poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
@@ -316,9 +313,8 @@ class window:
               y=4
               x=-2
             x+=2
-          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[4]: 
-          z.marks_clean(win)
+          
           poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
@@ -326,9 +322,8 @@ class window:
               y=4
               x=-2
             x+=2
-          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[5]: 
-          z.marks_clean(win)
+          
           poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
@@ -336,9 +331,8 @@ class window:
               y=4
               x=-2
             x+=2 
-          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[6]: 
-          z.marks_clean(win)
+          
           poriskar()
           for i in self.data_btech[l1.get()]:
             Label(win,text=i).grid(row=y,column=x)
@@ -346,9 +340,8 @@ class window:
               y=4
               x=-2
             x+=2
-          z.marks_view(win,val=self.data_btech[l1.get()])         
         elif l1.get() == self.btech[7]: 
-          z.marks_clean(win)
+          
           poriskar()
           for i  in (self.data_btech[l1.get()]):
             Label(win,text=i).grid(row=y,column=x)
@@ -356,7 +349,6 @@ class window:
               y=4
               x=-2
             x+=2
-          z.marks_view(win,val=self.data_btech[l1.get()])         
 
           
       # texts=['ulala']
@@ -402,7 +394,8 @@ class window:
       self.marks_10.grid(row=4,column=7,pady=5)
       self.marks_11=ttk.Entry(win)
       self.marks_11.grid(row=4,column=9,pady=5)
-
+      ttk.Button(win,text='Calculate CGPA').grid(row=4,column=11)
+      ttk.Button(win,text='Save to Database').grid(row=5,column=11)
       # self.tree.bind("<ButtonRelease-1>",self.dhor)
 
       pass

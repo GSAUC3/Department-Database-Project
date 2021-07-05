@@ -42,11 +42,8 @@ class header:
 
     def marks_view(self,guru,**score):
         self.guru=guru
-        Label(self.guru,text="Registration number",bg="lime").grid(row=5,column=0)
-        x=1
-        for i in score['val']:
-            Label(self.guru,text=i,bg="yellow").grid(row=5,column=x)
-            x+=1
+        # Label(self.guru,text="Registration number",bg="lime").grid(row=5,column=0)
+        pass
 
     def marks_clean(self,guru):
 

@@ -9,9 +9,10 @@ import back
 
 
 class window:
-    data_btech = json.load(open('jsons/btech.json'))
+    # data_btech = json.load(open('jsons/btech.json'))
     
-    # data_mtech = json.load(open('jsons/btech.json'))
+    data_btech = json.load(open('jsons/btech.json'))
+    # data_btech = json.load(open('jsons/btech.json'))
     def __init__(self, root, title, dept, resolution, siz):
         self.root = root
         self.dept = dept
@@ -248,6 +249,8 @@ class window:
             self.ks.current(0)
 
 
+   
+
     # 2nd window for marks--------------------------------------------------------------------marks---
     def marks(self):
       selected=self.h.tree.focus()
@@ -372,6 +375,30 @@ class window:
       
       Label(win,text="Registration Number: "+value[1],bg='Lightblue').grid(row=2,column=4,columnspan=4)
 
+      def calculate_gpa():
+        m0=self.marks_1.get()
+        m1=self.marks_2.get()
+        m2=self.marks_3.get()
+        m3=self.marks_4.get()
+        m4=self.marks_5.get()
+        m5=self.marks_6.get()
+        m6=self.marks_7.get()
+        m7=self.marks_8.get()
+        m8=self.marks_9.get()
+        m9=self.marks_10.get()
+        m10=self.marks_11.get()
+        l=[m0,m1,m2,m3,m4,m5,m6,m7,m8,m9,m10]
+        sum=0
+        count=0
+        for i in l:
+          if i!='':
+            sum=sum+int(i)
+            count+=1
+        # cgpa=(int(m0)+int(m1)+int(m2)+int(m3)+int(m4)+int(m5)+int(m6)+int(m7)+int(m8)+int(m9)+int(m10))
+        sum=sum/(100*count)
+        sum=sum*100
+        ttk.Label(win,text=f'CGPA for this Semester = {sum/9.5}',font='Ariel 30').grid(row=6,column=1,columnspan=10)
+
       self.marks_1=ttk.Entry(win)
       self.marks_1.grid(row=3,column=1,pady=5)
       self.marks_2=ttk.Entry(win)
@@ -394,9 +421,10 @@ class window:
       self.marks_10.grid(row=4,column=7,pady=5)
       self.marks_11=ttk.Entry(win)
       self.marks_11.grid(row=4,column=9,pady=5)
-      ttk.Button(win,text='Calculate CGPA').grid(row=4,column=11)
+      ttk.Button(win,text='Calculate CGPA',command=calculate_gpa).grid(row=4,column=11)
       ttk.Button(win,text='Save to Database').grid(row=5,column=11)
       # self.tree.bind("<ButtonRelease-1>",self.dhor)
+
 
       pass
        

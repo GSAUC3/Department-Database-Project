@@ -9,9 +9,9 @@
 - json
 - sqlite3
 
-***
 
-`NOT YET finished. In progress.` 
+
+
 
 ***
 

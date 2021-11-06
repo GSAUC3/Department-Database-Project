@@ -119,6 +119,8 @@ def in_log(user,pas):
     conn = sqlite3.connect('login.db')
     c = conn.cursor()
     c.execute("SELECT * FROM admin WHERE userid=?",(user,))
+    # c.execute("SELECT * FROM admin WHERE userid='" + user + "'")
+    
     amni=c.fetchall()
     conn.commit()
     # print (str(amni[0][1]))
@@ -130,12 +132,3 @@ def in_log(user,pas):
 
 login()
 
-# print(in_log('admin','12345'))
-# conn = sqlite3.connect('login.db')
-# c = conn.cursor()
-# c.execute("SELECT * FROM admin")
-# amni=c.fetchall()
-# conn.commit()
-
-# conn.close()
-# print(amni)
